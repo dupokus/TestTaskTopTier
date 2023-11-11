@@ -284,13 +284,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 275577515}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 303206395}
-  m_Father: {fileID: 956110756}
+  m_Father: {fileID: 547642124}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -341,7 +341,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 275577518}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1081482635}
+        m_TargetAssemblyTypeName: ProfilePictureScript, Assembly-CSharp
+        m_MethodName: Default_Clicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &275577518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -678,13 +690,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 356366795}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 265642982}
-  m_Father: {fileID: 956110756}
+  m_Father: {fileID: 547642124}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -735,7 +747,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 356366798}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1081482635}
+        m_TargetAssemblyTypeName: ProfilePictureScript, Assembly-CSharp
+        m_MethodName: FromFile_Clicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &356366798
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -869,6 +893,11 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 956110756}
+  - {fileID: 1081482632}
+  - {fileID: 1679331499}
+  - {fileID: 356366796}
+  - {fileID: 275577516}
+  - {fileID: 1350123902}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -902,16 +931,11 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 956110755}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1081482632}
-  - {fileID: 1679331499}
-  - {fileID: 356366796}
-  - {fileID: 275577516}
-  - {fileID: 1350123902}
+  m_Children: []
   m_Father: {fileID: 547642124}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -969,6 +993,7 @@ GameObject:
   - component: {fileID: 1081482632}
   - component: {fileID: 1081482634}
   - component: {fileID: 1081482633}
+  - component: {fileID: 1081482635}
   m_Layer: 5
   m_Name: ProfilePic
   m_TagString: Untagged
@@ -983,12 +1008,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1081482631}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 956110756}
+  m_Father: {fileID: 547642124}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
@@ -1034,6 +1059,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1081482631}
   m_CullTransparentMesh: 1
+--- !u!114 &1081482635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1081482631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aefa7ab4530fd09429121cfe76777146, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profileImage: {fileID: 1081482633}
+  defaultSprite: {fileID: 21300000, guid: 6447e7d7507ceec479b6adcb2248995b, type: 3}
 --- !u!1 &1350123901
 GameObject:
   m_ObjectHideFlags: 0
@@ -1046,6 +1085,7 @@ GameObject:
   - component: {fileID: 1350123905}
   - component: {fileID: 1350123904}
   - component: {fileID: 1350123903}
+  - component: {fileID: 1350123906}
   m_Layer: 5
   m_Name: GoBack
   m_TagString: Untagged
@@ -1060,13 +1100,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1350123901}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1372184047}
-  m_Father: {fileID: 956110756}
+  m_Father: {fileID: 547642124}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -1117,7 +1157,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1350123904}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1350123906}
+        m_TargetAssemblyTypeName: GoBackButtonScript, Assembly-CSharp
+        m_MethodName: GoBack_Clicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1350123904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1156,6 +1208,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1350123901}
   m_CullTransparentMesh: 1
+--- !u!114 &1350123906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1350123901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e60bfa2da85a79d4592bacd35318a80d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: MainMenu
 --- !u!1 &1372184046
 GameObject:
   m_ObjectHideFlags: 0
@@ -1303,6 +1368,7 @@ GameObject:
   - component: {fileID: 1679331502}
   - component: {fileID: 1679331501}
   - component: {fileID: 1679331500}
+  - component: {fileID: 1679331503}
   m_Layer: 5
   m_Name: UseCamera
   m_TagString: Untagged
@@ -1317,13 +1383,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1679331498}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 324442570}
-  m_Father: {fileID: 956110756}
+  m_Father: {fileID: 547642124}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -1374,7 +1440,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1679331501}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1679331503}
+        m_TargetAssemblyTypeName: GoBackButtonScript, Assembly-CSharp
+        m_MethodName: GoBack_Clicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1679331501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1413,6 +1491,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1679331498}
   m_CullTransparentMesh: 1
+--- !u!114 &1679331503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1679331498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e60bfa2da85a79d4592bacd35318a80d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: Camera
 --- !u!1 &1887847909
 GameObject:
   m_ObjectHideFlags: 0
