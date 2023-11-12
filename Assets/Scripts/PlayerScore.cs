@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class PlayerScore : MonoBehaviour
 {
@@ -21,6 +22,11 @@ public class PlayerScore : MonoBehaviour
             Destroy(collision.gameObject);  // destroy the point particle
         }
         if (collision.gameObject.CompareTag("Obstacle"))
+        {
             Destroy(gameObject);
+            PlayerPrefs.SetInt("Score", score);
+            SceneManager.LoadScene("Endgame");
+        }
+
     }
 }
