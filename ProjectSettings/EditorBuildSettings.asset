@@ -6,21 +6,21 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Game.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
-    path: Assets/Scenes/Camera.unity
-    guid: 11b8157cd5ff0ca4a9a8f44b3cf69d38
-  - enabled: 1
-    path: Assets/Scenes/ProfilePic.unity
-    guid: f58356b54b483a143a7cd455dae171e9
-  - enabled: 1
-    path: Assets/Scenes/Endgame.unity
-    guid: 406a3d5e30c5f5d4881f4d6235a6af60
-  - enabled: 1
     path: Assets/Scenes/Loading.unity
     guid: 73b301b2b1d12714da873878db956bc8
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: fe8fd2cef91351e4b9ac6ac204baf4a4
+  - enabled: 1
+    path: Assets/Scenes/ProfilePic.unity
+    guid: f58356b54b483a143a7cd455dae171e9
+  - enabled: 1
+    path: Assets/Scenes/Camera.unity
+    guid: 11b8157cd5ff0ca4a9a8f44b3cf69d38
+  - enabled: 1
+    path: Assets/Scenes/Game.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Endgame.unity
+    guid: 406a3d5e30c5f5d4881f4d6235a6af60
   m_configObjects: {}

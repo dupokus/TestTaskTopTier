@@ -13,6 +13,12 @@ public class CameraScript : MonoBehaviour
     void Start()
     {
         DontDestroyOnLoad(this.gameObject);
+        Texture2D profilePicture = LoadProfilePicture();
+        if (profilePicture != null)
+        {
+            // If a profile picture was saved in PlayerPrefs, use it
+            display.texture = profilePicture;
+        }
     }
     public void EnableDisableCam_Clicked()
     {
@@ -38,6 +44,36 @@ public class CameraScript : MonoBehaviour
         tex.Stop();
         tex = null;
     }
+    public void SaveProfilePicture(Texture2D texture)
+    {
+        // Convert the Texture2D to a byte array
+        byte[] bytes = texture.EncodeToPNG();
+
+        // Convert the byte array to a string
+        string base64 = System.Convert.ToBase64String(bytes);
+
+        // Save the string in PlayerPrefs
+        PlayerPrefs.SetString("ProfilePicture", base64);
+    }
+
+    public Texture2D LoadProfilePicture()
+    {
+        // Load the string from PlayerPrefs
+        string base64 = PlayerPrefs.GetString("ProfilePicture");
+
+        // If the string is empty, return null
+        if (string.IsNullOrEmpty(base64))
+            return null;
+
+        // Convert the string to a byte array
+        byte[] bytes = System.Convert.FromBase64String(base64);
+
+        // Create a new Texture2D and load the byte array into it
+        Texture2D texture = new Texture2D(2, 2);
+        texture.LoadImage(bytes);
+
+        return texture;
+    }
 
     public void TakePhoto_Clicked()
     {
@@ -46,6 +82,8 @@ public class CameraScript : MonoBehaviour
             profilePicture = new Texture2D(tex.width, tex.height);
             profilePicture.SetPixels(tex.GetPixels());
             profilePicture.Apply();
+            // Save the profile picture
+            SaveProfilePicture(profilePicture);
 
             // Convert the photo to a byte array
             //byte[] bytes = photo.EncodeToPNG();
