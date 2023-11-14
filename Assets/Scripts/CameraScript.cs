@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,6 +8,8 @@ public class CameraScript : MonoBehaviour
     public RawImage display;
     public TMP_Text enableDisableText;
     public static Texture2D profilePicture;
+    public UnityEngine.UI.Button goBackButton;
+    public Image profileImage;
     void Start()
     {
         DontDestroyOnLoad(this.gameObject);
@@ -19,6 +19,10 @@ public class CameraScript : MonoBehaviour
             // If a profile picture was saved in PlayerPrefs, use it
             display.texture = profilePicture;
         }
+        // Hide the ProfileImage at the beginning
+        Color c = profileImage.color;
+        c.a = 0f;
+        profileImage.color = c;
     }
     public void EnableDisableCam_Clicked()
     {
@@ -26,6 +30,7 @@ public class CameraScript : MonoBehaviour
         {
             DisableCam();
             enableDisableText.text = "Enable Camera";
+            goBackButton.gameObject.SetActive(true);
         }
         else
         {
@@ -34,15 +39,30 @@ public class CameraScript : MonoBehaviour
             display.texture = tex;
 
             tex.Play();
-            enableDisableText.text = "Disable Camera"; 
+            enableDisableText.text = "Disable Camera";
+            goBackButton.gameObject.SetActive(false);
         }
-}
+    }
 
     private void DisableCam()
     {
         display.texture = null;
         tex.Stop();
         tex = null;
+        // Load the profile picture from PlayerPrefs
+        string base64 = PlayerPrefs.GetString("ProfilePicture");
+        if (!string.IsNullOrEmpty(base64))
+        {
+            byte[] bytes = System.Convert.FromBase64String(base64);
+            Texture2D texture = new Texture2D(2, 2);
+            texture.LoadImage(bytes);
+            profileImage.sprite = Sprite.Create(texture, new Rect(0, 0,
+                texture.width, texture.height), new Vector2(0.5f, 0.5f));
+            // Show the ProfileImage with the photo you took
+            Color c = profileImage.color;
+            c.a = 1f;
+            profileImage.color = c;
+        }
     }
     public void SaveProfilePicture(Texture2D texture)
     {

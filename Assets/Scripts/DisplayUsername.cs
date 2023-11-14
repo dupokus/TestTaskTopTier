@@ -10,6 +10,7 @@ public class DisplayUsername : MonoBehaviour
     public TMP_InputField display;
     public TextMeshProUGUI lastScoreText;
     public TextMeshProUGUI bestScoreText;
+    public Image profileImage;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +26,17 @@ public class DisplayUsername : MonoBehaviour
         // Load the best score from PlayerPrefs for the current username
         int bestScore = PlayerPrefs.GetInt(username + "_HighScore", 0);
         bestScoreText.text = "Best Score: " + bestScore.ToString();
+
+        // Load the profile picture from PlayerPrefs
+        string base64 = PlayerPrefs.GetString("ProfilePicture");
+        if (!string.IsNullOrEmpty(base64))
+        {
+            byte[] bytes = System.Convert.FromBase64String(base64);
+            Texture2D texture = new Texture2D(2, 2);
+            texture.LoadImage(bytes);
+            profileImage.sprite = Sprite.Create(texture, new Rect(0, 0,
+                texture.width, texture.height), new Vector2(0.5f, 0.5f));
+        }
     }
     public void Create()
     {
