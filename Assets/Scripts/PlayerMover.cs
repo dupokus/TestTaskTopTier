@@ -7,8 +7,8 @@ public class PlayerMoveScript : MonoBehaviour
     float timeCounter = 0;
     bool direction = true; // true -- clockwise, false -- counterclockwise
     public float speed = 1f;
-    public float radius = 1;
-
+    public float radius = 1f;
+    
     // Update is called once per frame
     void Update()
     {
@@ -19,7 +19,7 @@ public class PlayerMoveScript : MonoBehaviour
         else
             timeCounter -= Time.deltaTime * speed;
         float x = Mathf.Cos(timeCounter) * radius;
-        float y = Mathf.Sin(timeCounter) * radius - 1;
+        float y = Mathf.Sin(timeCounter) * radius;
         float z = 0;
 
         transform.position = new Vector3(x, y, z);

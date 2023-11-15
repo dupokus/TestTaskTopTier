@@ -41,6 +41,9 @@ public class CameraScript : MonoBehaviour
             tex.Play();
             enableDisableText.text = "Disable Camera";
             goBackButton.gameObject.SetActive(false);
+            Color c = profileImage.color;
+            c.a = 0f;
+            profileImage.color = c;
         }
     }
 

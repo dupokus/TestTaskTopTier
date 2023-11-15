@@ -68,10 +68,32 @@ public class ProfilePictureScript : MonoBehaviour
     }
     public void Default_Clicked()
     {
+
         profileImage.sprite = defaultSprite;
         Texture2D texture = new Texture2D(defaultSprite.texture.width, defaultSprite.texture.height);
         texture.SetPixels(defaultSprite.texture.GetPixels());
         texture.Apply();
         CameraScript.profilePicture = texture;
+        // Convert the Texture2D to a byte array
+        byte[] bytes = texture.EncodeToPNG();
+
+        // Convert the byte array to a string
+        string base64 = System.Convert.ToBase64String(bytes);
+
+        // Save the string in PlayerPrefs
+        PlayerPrefs.SetString("ProfilePicture", base64);
+        base64 = PlayerPrefs.GetString("ProfilePicture");
+        if (!string.IsNullOrEmpty(base64))
+        {
+            bytes = System.Convert.FromBase64String(base64);
+            texture = new Texture2D(2, 2);
+            texture.LoadImage(bytes);
+            profileImage.sprite = Sprite.Create(texture, new Rect(0, 0,
+                texture.width, texture.height), new Vector2(0.5f, 0.5f));
+            // Show the ProfileImage with the photo you took
+            Color c = profileImage.color;
+            c.a = 1f;
+            profileImage.color = c;
+        }
     }
 }
