@@ -10,13 +10,20 @@ public class ProfilePictureScript : MonoBehaviour
         if (CameraScript.profilePicture != null)
         {
             // If a profile picture was taken with the camera, use it
-            profileImage.sprite = Sprite.Create(CameraScript.profilePicture,
-                new Rect(0, 0, CameraScript.profilePicture.width, 
-                CameraScript.profilePicture.height), new Vector2(0.5f, 0.5f));
+            string base64 = PlayerPrefs.GetString("ProfilePicture");
+            if (!string.IsNullOrEmpty(base64))
+            {
+                byte[] bytes = System.Convert.FromBase64String(base64);
+                Texture2D texture = new Texture2D(2, 2);
+                texture.LoadImage(bytes);
+                profileImage.sprite = Sprite.Create(texture, new Rect(0, 0,
+                    texture.width, texture.height), new Vector2(0.5f, 0.5f));
+
+            }
         }
         else if (defaultSprite != null)
         {
-            
+
             if (defaultSprite != null)
             {
                 profileImage.sprite = defaultSprite;
@@ -45,7 +52,7 @@ public class ProfilePictureScript : MonoBehaviour
                     var reader = new FileReader();
                     reader.onload = function(event) {
                         var base64 = event.target.result.split(',')[1];
-                        SendMessage('ProfilePictureScript', 'OnFileSelected', base64);
+                        SendMessage('PicController', 'OnFileSelected', base64);
                     };
                     reader.readAsDataURL(file);
                 };
@@ -54,6 +61,7 @@ public class ProfilePictureScript : MonoBehaviour
             window.UnityOpenFileDialog();
             "
         );
+        
     }
     public void OnFileSelected(string base64)
     {
@@ -65,6 +73,9 @@ public class ProfilePictureScript : MonoBehaviour
         // Set the profile picture
         profileImage.sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height),
             new Vector2(0.5f, 0.5f));
+
+        // Save the base64 string in PlayerPrefs
+        PlayerPrefs.SetString("ProfilePicture", base64);
     }
     public void Default_Clicked()
     {
