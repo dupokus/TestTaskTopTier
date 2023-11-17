@@ -13,7 +13,7 @@ public class CameraScript : MonoBehaviour
     void Start()
     {
         DontDestroyOnLoad(this.gameObject);
-        Texture2D profilePicture = LoadProfilePicture();
+        profilePicture = LoadProfilePicture();
         if (profilePicture != null)
         {
             // If a profile picture was saved in PlayerPrefs, use it
@@ -24,6 +24,7 @@ public class CameraScript : MonoBehaviour
         c.a = 0f;
         profileImage.color = c;
     }
+
     public void EnableDisableCam_Clicked()
     {
         if (tex != null)
@@ -34,16 +35,19 @@ public class CameraScript : MonoBehaviour
         }
         else
         {
-            WebCamDevice device = WebCamTexture.devices[0];
-            tex = new WebCamTexture(device.name);
-            display.texture = tex;
+            if (WebCamTexture.devices.Length > 0)
+            {
+                WebCamDevice device = WebCamTexture.devices[0];
+                tex = new WebCamTexture(device.name);
+                display.texture = tex;
 
-            tex.Play();
-            enableDisableText.text = "Disable Camera";
-            goBackButton.gameObject.SetActive(false);
-            Color c = profileImage.color;
-            c.a = 0f;
-            profileImage.color = c;
+                tex.Play();
+                enableDisableText.text = "Disable Camera";
+                goBackButton.gameObject.SetActive(false);
+                Color c = profileImage.color;
+                c.a = 0f;
+                profileImage.color = c;
+            }
         }
     }
 
@@ -65,8 +69,10 @@ public class CameraScript : MonoBehaviour
             Color c = profileImage.color;
             c.a = 1f;
             profileImage.color = c;
+            Debug.Log("Texture width: " + texture.width + ", height: " + texture.height);  // Add this line
         }
     }
+
     public void SaveProfilePicture(Texture2D texture)
     {
         // Convert the Texture2D to a byte array
@@ -95,6 +101,8 @@ public class CameraScript : MonoBehaviour
         Texture2D texture = new Texture2D(2, 2);
         texture.LoadImage(bytes);
 
+        Debug.Log("Loaded texture width: " + texture.width + ", height: " + texture.height);  // Add this line
+
         return texture;
     }
 
@@ -102,18 +110,36 @@ public class CameraScript : MonoBehaviour
     {
         if (tex != null)
         {
-            profilePicture = new Texture2D(tex.width, tex.height);
+            profilePicture = new Texture2D(tex.width, tex.height, TextureFormat.RGB24, false);
             profilePicture.SetPixels(tex.GetPixels());
             profilePicture.Apply();
-            // Save the profile picture
-            SaveProfilePicture(profilePicture);
+            // Convert the Texture2D to a byte array
+            byte[] bytes = profilePicture.EncodeToPNG();
 
-            // Convert the photo to a byte array
-            //byte[] bytes = photo.EncodeToPNG();
+            // Convert the byte array to a string
+            string base64 = System.Convert.ToBase64String(bytes);
+
+            Debug.Log("Saved texture width: " + profilePicture.width + ", height: " + profilePicture.height);
+            // Call the JavaScript function to save the file
+            // Define the JavaScript function
+            string jsFunction = @"
+            window.SaveFile = function(base64, fileName) {
+                var link = document.createElement('a');
+                link.download = fileName;
+                link.href = 'data:application/octet-stream;base64,' + base64;
+                link.click();
+            };
+        ";
+
+            // Run the JavaScript function
+            Application.ExternalEval(jsFunction);
+
+            // Call the JavaScript function to save the file
+            Application.ExternalEval("SaveFile('" + base64 + "', 'taken_photo.png');");
 
             // You can now use the byte array as you wish
             // For example, you can save it as a PNG image on disk:
-            //System.IO.File.WriteAllBytes("photo.png", bytes);
+            //System.IO.File.WriteAllBytes("taken_photo.png", bytes);
         }
         else
         {
