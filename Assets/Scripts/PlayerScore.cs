@@ -16,7 +16,7 @@ public class PlayerScore : MonoBehaviour
     }
     private void Update()
     {
-            deltaTime += (Time.deltaTime - deltaTime) * 0.1f;
+        deltaTime += (Time.deltaTime - deltaTime) * 0.1f;
         float fps = 1.0f / deltaTime;
         fpsText.text = ("FPS: " + Mathf.Ceil (fps).ToString ());
     }
